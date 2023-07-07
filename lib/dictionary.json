@@ -1832,16 +1832,6 @@
 
 
 {
-    "abbonamento_scaduto": {
-        "da_ritradurre": "",
-        "it": "Il tuo abbonamento al momento non è attivo. Per ulteriori informazioni vai alla sezione <strong><a href=\"#\/gestione_strutture\/abbonamenti\">Abbonamenti<\/a><\/strong> o contattaci a <a href=\"mailto:supporto@hbenchmark.it\">supporto@hbenchmark.it<\/a>.",
-        "en": "Your subscription has expired. To renew it contact us at <a href=\"mailto:supporto@hbenchmark.it\">supporto@hbenchmark.it<\/a>.",
-        "de": "Ihr Abonnement ist abgelaufen. Um Ihr Abonnement zu erneuern, kontaktieren Sie uns bitte unter <a href=\"mailto:supporto@hbenchmark.it\">supporto@hbenchmark.it<\/a>."
-    }
-}
-
-
-{
     "gruppi": {
         "strutture": {
             "it": "struttura",
@@ -1900,6 +1890,16 @@
 
 
 {
+    "abbonamento_scaduto": {
+        "da_ritradurre": "",
+        "it": "Il tuo abbonamento al momento non è attivo. Per ulteriori informazioni vai alla sezione <strong><a href=\"#\/gestione_strutture\/abbonamenti\">Abbonamenti<\/a><\/strong> o contattaci a <a href=\"mailto:supporto@hbenchmark.it\">supporto@hbenchmark.it<\/a>.",
+        "en": "Your subscription has expired. To renew it contact us at <a href=\"mailto:supporto@hbenchmark.it\">supporto@hbenchmark.it<\/a>.",
+        "de": "Ihr Abonnement ist abgelaufen. Um Ihr Abonnement zu erneuern, kontaktieren Sie uns bitte unter <a href=\"mailto:supporto@hbenchmark.it\">supporto@hbenchmark.it<\/a>."
+    }
+}
+
+
+{
     "ultimo_ricalcolo": {
         "it": "Ultimo ricalcolo il",
         "en": "",
@@ -1913,6 +1913,15 @@
         "it": "Mostra tutti gli indicatori",
         "en": "Show all indicators",
         "de": "Alle Indikatoren anzeigen"
+    }
+}
+
+
+{
+    "mostra_tutte": {
+        "it": "Mostra tutti i segmenti",
+        "en": "Show all segments",
+        "de": "Alle Segmente anzeigen"
     }
 }
 
@@ -3065,15 +3074,6 @@
 
 
 {
-    "mostra_tutte": {
-        "it": "Mostra tutti i segmenti",
-        "en": "Show all segments",
-        "de": "Alle Segmente anzeigen"
-    }
-}
-
-
-{
     "passa_ad_indicatori": {
         "it": "Seleziona Indicatori",
         "en": "Select Indicators",
@@ -3520,6 +3520,62 @@
 
 
 {
+    "eventi_trovati": {
+        "it": "Numero eventi trovati",
+        "en": "Number of events",
+        "de": "Anzahl der Veranstaltungen"
+    },
+    "nuovo_evento": {
+        "it": "Nuovo Evento",
+        "en": "New Event",
+        "de": "Neue Veranstaltung"
+    },
+    "elimina_evento": {
+        "it": "Elimina evento",
+        "en": "Delete event",
+        "de": "Veranstaltung löschen"
+    },
+    "conferma_cancellazione": {
+        "it": "Sei sicuro di voler eliminare questo evento",
+        "en": "Are you sure you want to delete this event",
+        "de": "Möchten Sie diese Veranstaltung wirklich löschen?"
+    },
+    "globale": {
+        "it": "Globale",
+        "en": "Global",
+        "de": "Global"
+    },
+    "struttura": {
+        "it": "Struttura",
+        "en": "Structure",
+        "de": "Struktur"
+    },
+    "territorio": {
+        "it": "Territorio",
+        "en": "Territory",
+        "de": "Gebiet"
+    },
+    "zona": {
+        "it": "Zona",
+        "en": "Area",
+        "de": "Bereich"
+    },
+    "località": {
+        "it": "Località",
+        "en": "Location",
+        "de": "Ort"
+    },
+    "modale": {
+        "titolo": {
+            "it": "Crea un nuovo evento",
+            "en": "Create a new event",
+            "de": "Neue Veranstaltung erstellen"
+        }
+    }
+}
+
+
+{
     "ricalcolo_in_corso": {
         "it": "Ricalcolo dati in corso: l'operazione potrebbe richiedere qualche minuto.",
         "en": "Data recalc in progress: it might take some minutes.",
@@ -3667,62 +3723,6 @@
             "it": "Richiesto da",
             "en": "",
             "de": ""
-        }
-    }
-}
-
-
-{
-    "eventi_trovati": {
-        "it": "Numero eventi trovati",
-        "en": "Number of events",
-        "de": "Anzahl der Veranstaltungen"
-    },
-    "nuovo_evento": {
-        "it": "Nuovo Evento",
-        "en": "New Event",
-        "de": "Neue Veranstaltung"
-    },
-    "elimina_evento": {
-        "it": "Elimina evento",
-        "en": "Delete event",
-        "de": "Veranstaltung löschen"
-    },
-    "conferma_cancellazione": {
-        "it": "Sei sicuro di voler eliminare questo evento",
-        "en": "Are you sure you want to delete this event",
-        "de": "Möchten Sie diese Veranstaltung wirklich löschen?"
-    },
-    "globale": {
-        "it": "Globale",
-        "en": "Global",
-        "de": "Global"
-    },
-    "struttura": {
-        "it": "Struttura",
-        "en": "Structure",
-        "de": "Struktur"
-    },
-    "territorio": {
-        "it": "Territorio",
-        "en": "Territory",
-        "de": "Gebiet"
-    },
-    "zona": {
-        "it": "Zona",
-        "en": "Area",
-        "de": "Bereich"
-    },
-    "località": {
-        "it": "Località",
-        "en": "Location",
-        "de": "Ort"
-    },
-    "modale": {
-        "titolo": {
-            "it": "Crea un nuovo evento",
-            "en": "Create a new event",
-            "de": "Neue Veranstaltung erstellen"
         }
     }
 }
@@ -4213,30 +4213,6 @@
 
 
 {
-    "colonne": {
-        "da": {
-            "it": "Da"
-        },
-        "a": {
-            "it": "A"
-        },
-        "importo": {
-            "it": "Importo"
-        },
-        "tipo_utenza": {
-            "it": "Utenza"
-        },
-        "potenza_impegnata_kw": {
-            "it": "Potenza Impegnata"
-        },
-        "consumo": {
-            "it": "Consumo"
-        }
-    }
-}
-
-
-{
     "genera_dati": {
         "it": "Genera dati"
     },
@@ -4263,6 +4239,30 @@
     },
     "sincronizza_infusionsoft": {
         "it": "Sincronizza Infusionsoft"
+    }
+}
+
+
+{
+    "colonne": {
+        "da": {
+            "it": "Da"
+        },
+        "a": {
+            "it": "A"
+        },
+        "importo": {
+            "it": "Importo"
+        },
+        "tipo_utenza": {
+            "it": "Utenza"
+        },
+        "potenza_impegnata_kw": {
+            "it": "Potenza Impegnata"
+        },
+        "consumo": {
+            "it": "Consumo"
+        }
     }
 }
 
@@ -4897,57 +4897,6 @@
 
 
 {
-    "titolo_testo": {
-        "it": "Cosa rappresentano gli indicatori di Posizionamento di Mercato?",
-        "en": "",
-        "de": ""
-    },
-    "scopri_di_più": {
-        "it": "Scopri di più...",
-        "en": "Learn more...",
-        "de": ""
-    },
-    "etichetta_periodo": {
-        "it": "Periodo",
-        "en": "Period",
-        "de": "Zeitraum"
-    },
-    "tipi_mercato": {
-        "generale": {
-            "it": "Generale",
-            "en": "",
-            "de": ""
-        },
-        "piazzola": {
-            "it": "Piazzole",
-            "en": "",
-            "de": ""
-        },
-        "bungalow": {
-            "it": "Bungalow \/ Villette",
-            "en": "",
-            "de": ""
-        },
-        "caravan": {
-            "it": "Caravan \/ Casette mobili",
-            "en": "",
-            "de": ""
-        },
-        "ricavo": {
-            "it": "Ricavo per prodotto",
-            "en": "",
-            "de": ""
-        },
-        "mq": {
-            "it": "Ricavo per m²",
-            "en": "",
-            "de": ""
-        }
-    }
-}
-
-
-{
     "titolo_gestione_struttura": {
         "it": "Gestione Struttura",
         "en": "Structure Management",
@@ -5002,6 +4951,57 @@
         "it": "Torna all'elenco",
         "en": "Back to the list",
         "de": "Zurück zur Liste"
+    }
+}
+
+
+{
+    "titolo_testo": {
+        "it": "Cosa rappresentano gli indicatori di Posizionamento di Mercato?",
+        "en": "",
+        "de": ""
+    },
+    "scopri_di_più": {
+        "it": "Scopri di più...",
+        "en": "Learn more...",
+        "de": ""
+    },
+    "etichetta_periodo": {
+        "it": "Periodo",
+        "en": "Period",
+        "de": "Zeitraum"
+    },
+    "tipi_mercato": {
+        "generale": {
+            "it": "Generale",
+            "en": "",
+            "de": ""
+        },
+        "piazzola": {
+            "it": "Piazzole",
+            "en": "",
+            "de": ""
+        },
+        "bungalow": {
+            "it": "Bungalow \/ Villette",
+            "en": "",
+            "de": ""
+        },
+        "caravan": {
+            "it": "Caravan \/ Casette mobili",
+            "en": "",
+            "de": ""
+        },
+        "ricavo": {
+            "it": "Ricavo per prodotto",
+            "en": "",
+            "de": ""
+        },
+        "mq": {
+            "it": "Ricavo per m²",
+            "en": "",
+            "de": ""
+        }
     }
 }
 
@@ -6100,15 +6100,6 @@
 
 
 {
-    "pagamento_annullato": {
-        "it": "Il pagamento non è andato a buon fine",
-        "en": "The payment was canceled",
-        "de": "Die Zahlung wurde storniert"
-    }
-}
-
-
-{
     "registrazione": {
         "it": "Registrazione",
         "en": "Registration",
@@ -6143,6 +6134,15 @@
         "it": "Vai alla Dashboard",
         "en": "Go to the Dashboard",
         "de": "Gehe zum Dashboard"
+    }
+}
+
+
+{
+    "pagamento_annullato": {
+        "it": "Il pagamento non è andato a buon fine",
+        "en": "The payment was canceled",
+        "de": "Die Zahlung wurde storniert"
     }
 }
 

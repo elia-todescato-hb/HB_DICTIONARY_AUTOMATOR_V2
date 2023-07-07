@@ -9,8 +9,7 @@ function decodeUtf8($string)
 }
 
 //TODO: da fare tab per evitare di far impazzire gabriel
-chdir("/Users/etodescato/Documents/CHAT/"); //TODO: dinamico
-
+chdir("/Users/" . get_current_user() . "/Documents/CHAT/"); //TODO: dinamico
 class write_json
 {
   public static function write_json_to_file()

@@ -13,7 +13,7 @@ class read_js
 {
   public $js_file;
   public $dic = "frontend"; //change this variable to change the reader of the dictionary folder
-  public $nome_dizionario = "dizionario_"; //TODO: da cambiare come argomento di input
+  public $nome_dizionario = "dizionario_";
   public function __construct()
   {
     $this->js_file = array();
@@ -32,11 +32,9 @@ class read_js
     $array_of_dir = $folder_scan->scan($this->dic);
 
     info("Scanning...");
-    foreach ($array_of_dir as $key => $dir_path) { //ciuclo tutti i percorsi
+    foreach ($array_of_dir as $key => $dir_path) {
       $folder = pathinfo($dir_path);
-      if (key_exists('extension', $folder)) { //allora stiamo valutando un file
-        //open dir path that i have
-        // info("la chiave con valore [extension] esiste e corrisponde al path: {$folder['dirname']}");
+      if (key_exists('extension', $folder)) {
         if ($folder['extension'] == "js" && str_contains($folder['basename'], "dizionario")) {
           array_push($this->js_file, "{$folder['dirname']}/{$folder['basename']}");
         }
@@ -46,8 +44,8 @@ class read_js
   }
   /**
    * Read the dictionary file
-   * @params none
-   *
+   * @param none
+   * @return string
    */
   function read()
   {
@@ -74,19 +72,18 @@ class read_js
     $str_array = array();
     $return_str = array();
     foreach ($str as $raw_dic) {
-      $str_array = explode("const $this->nome_dizionario", $raw_dic); //remove const var =
+      $str_array = explode("const $this->nome_dizionario", $raw_dic);
       $re = '/^(.*?)\{/ms';
       preg_match($re, $raw_dic, $matches);
       if ($matches[1] !== null) {
-        $str_array = explode($matches[1], $raw_dic); //remove const var =
+        $str_array = explode($matches[1], $raw_dic);
         $str_array = explode("export", $str_array[1]);
         $nome_dizionario = $str_array[1];
         info("sto pulendo {$nome_dizionario}");
         // info($str_array[0]);
         // preprint($str_array);
-        array_push($return_str, $str_array[0]); //TODO: da cambiare con indice 0
+        array_push($return_str, $str_array[0]);
       }
-      //clean also the export js function
     }
     info("finito di pulire..");
     return ($return_str);
