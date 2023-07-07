@@ -8,9 +8,9 @@ class scan_dir{
   public $file = array();
 
   /**
-   * Scan all dir from the dir i passed
+   * Scan all dir from the dir passed
    * @param string : dir
-   * @param int : deep
+   * @param int : deep = to enter in sub_dir
    * @return array : $this->file
    */
   function scan($dir, $deep = 0) {

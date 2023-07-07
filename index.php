@@ -2,22 +2,27 @@
 
 <?php
 error_reporting(E_ERROR | E_PARSE);
+include "tools/log/log.php";
 include "src/read_js.php";
 $dictionary = new read_js();
-$dictionary = substr($dictionary->read(), 1, -1);
+$dictionary = $dictionary->read();
 
 $svelte = new read_svelte();
-$svelte = substr($svelte->read(), 1, -1);
+$svelte = $svelte->read();
 ?>
 
+<?php
+foreach ($dictionary as $key => $value) {
+  echo "
 <script>
-//ajax for js file
-var dictionary = <?php echo"$dictionary "?>
+  //ajax for js file
+  var dictionary = $value
+  console.log(dictionary);
   dictionary = JSON.stringify(dictionary)
   //make ajax call
   $.ajax({
-    type: "POST",
-    url: "src/write_json.php",
+    type: \"POST\",
+    url: \"src/write_json.php\",
     dataType: 'json',
     data: {
       dictionary: dictionary
@@ -26,15 +31,42 @@ var dictionary = <?php echo"$dictionary "?>
       console.log(data);
     }
   });
+  </script>
+  ";
+}
+?>
 
-</script>
+<?php
+foreach ($svelte as $key => $value) {
+  echo "
+<script>
+  //ajax for js file
+  var dictionary = $value
+  console.log(dictionary);
+  dictionary = JSON.stringify(dictionary)
+  //make ajax call
+  $.ajax({
+    type: \"POST\",
+    url: \"src/write_json.php\",
+    dataType: 'json',
+    data: {
+      dictionary: dictionary_svelte
+    },
+    success: function(data) {
+      console.log(data);
+    }
+  });
+  </script>
+  ";
+}
+?>
 
 
 
 <script>
-var dictionary_svelte = <?php echo"$svelte" ?>
+  var dictionary_svelte = <?php echo "$svelte" ?>
 
-dictionary_svelte = JSON.stringify(dictionary_svelte);
+  dictionary_svelte = JSON.stringify(dictionary_svelte);
   //make ajax call
   $.ajax({
     type: "POST",
@@ -50,8 +82,5 @@ dictionary_svelte = JSON.stringify(dictionary_svelte);
 </script>
 
 <h1>
-✅ Dictionary generated
+  ✅ Dictionary generated
 </h1>
-
-
-

@@ -1,7 +1,14 @@
 <?php
+ini_set('memory_limit', '2G');
+
 include "tools/preprint.php";
 include "read_svelte.php";
-include "tools/scan_dir.php";
+include "scan_dir.php";
+
+preprint("<h1>Checking if all include are correct... 🔍</h1>");
+if (file_exists("scan_dir.php") && file_exists("tools/preprint.php") && file_exists("tools/preprint.php")) {
+  preprint("<h2>✅ All includes are correct</h2>");
+}
 class read_js
 {
   public $js_file;
@@ -18,58 +25,43 @@ class read_js
    * @params none
    * @return array
    */
-  function getPath($dic){
-    $dir_path = $dic;
+  function getPath()
+  {
     //enter in the dir_path and scan all the files that are in the folder
-    $dir_handle = opendir($dir_path); //open the current directory where the dictionary files are stored
+    $folder_scan = new scan_dir();
+    $array_of_dir = $folder_scan->scan($this->dic);
 
-
-
-    while (false!== ($file = readdir($dir_handle))) { //if directory exists and php can read it
-      while (scandir($file)){
-        if(is_dir($file)){
-          $this->getPath($file);
+    info("Scanning...");
+    foreach ($array_of_dir as $key => $dir_path) { //ciuclo tutti i percorsi
+      $folder = pathinfo($dir_path);
+      if (key_exists('extension', $folder)) { //allora stiamo valutando un file
+        //open dir path that i have
+        // info("la chiave con valore [extension] esiste e corrisponde al path: {$folder['dirname']}");
+        if ($folder['extension'] == "js" && str_contains($folder['basename'], "dizionario")) {
+          array_push($this->js_file, "{$folder['dirname']}/{$folder['basename']}");
+        }
       }
     }
-      if ($file != "." && $file != "..") { //exclude parent directory
-        $file_info = pathinfo($file);
-        $sub_folders = (scandir($dir_path));
-        if ($file_info['extension'] == "js") {
-          $file_path = $dir_path. "/". $file; //get file path
-
-          if (is_dir($file_path)) {
-            $this->dic = $dir_path;
-            // preprint($this->dic);
-            $this->getPath($dir_path); //recursive research
-          } else {
-            //push filepath in an array
-            array_push($this->js_file, $file_path);
-          }
-
-        }else if($file_info['extension'] == 'svelte'){
-          //try svelte
-          $svelte = new read_svelte;
-          $svelte->read();
-        }else{
-          preprint($file);
-        }
-
-    }
-    closedir($dir_handle);
-    return $this->js_file; //return an array
-  // }
-}
+    return ($this->js_file);
+  }
   /**
    * Read the dictionary file
    * @params none
-  *
+   *
    */
-  function read(){
-    $path = $this->getPath($this->dic); //get the path of every dictionary file
+  function read()
+  {
+    $path = $this->getPath(); //get the path of every dictionary file
+    info("leggendo queste path: ");
+
     foreach ($path as $key => $value) {
+      info("eseguendo ... " . $value);
       $this->js_file[$key] = file_get_contents($value);
+      info("findendo ... " . $value);
     }
-    return $this->clean($this->js_file[0]); //remove bad char from encoding
+    info("sto pulendo:" . count($this->js_file) . " dizionari");
+    info("prima di pulire..");
+    return $this->clean($this->js_file); //remove bad char from encoding
   }
 
   /**
@@ -77,17 +69,26 @@ class read_js
    * @params string
    * @return string
    */
-  function clean($str){
-    $str_array = explode("const $this->nome_dizionario", $str); //remove const var =
-    $re = '/^(.*?)\{/ms';
-    preg_match($re, $str_array[1], $matches);
-    if($matches[1] == null){
-
-    }else{
-      $str_array = explode($matches[1], $str); //remove const var =
+  function clean($str)
+  {
+    $str_array = array();
+    $return_str = array();
+    foreach ($str as $raw_dic) {
+      $str_array = explode("const $this->nome_dizionario", $raw_dic); //remove const var =
+      $re = '/^(.*?)\{/ms';
+      preg_match($re, $raw_dic, $matches);
+      if ($matches[1] !== null) {
+        $str_array = explode($matches[1], $raw_dic); //remove const var =
+        $str_array = explode("export", $str_array[1]);
+        $nome_dizionario = $str_array[1];
+        info("sto pulendo {$nome_dizionario}");
+        // info($str_array[0]);
+        // preprint($str_array);
+        array_push($return_str, $str_array[0]); //TODO: da cambiare con indice 0
+      }
+      //clean also the export js function
     }
-
-    return $str_array[1];
-  //test
+    info("finito di pulire..");
+    return ($return_str);
   }
 }
