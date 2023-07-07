@@ -1936,30 +1936,6 @@
 
 
 {
-    "indicatori_selezionati": {
-        "it": "Indicatori selezionati",
-        "en": "Selected indicators",
-        "de": "Ausgew\u00e4hlte Indikatoren"
-    },
-    "aggiungi_indicatore": {
-        "it": "Aggiungi",
-        "en": "Add",
-        "de": "Hinzuf\u00fcgen"
-    },
-    "atterraggio_seleziona": {
-        "it": "Seleziona o aggiungi un indicatore",
-        "en": "Select or add an indicator",
-        "de": "Indikator ausw\u00e4hlen oder hinzuf\u00fcgen"
-    },
-    "atterraggio_aggiungi": {
-        "it": "Premi su aggiungi per aggiungere un nuovo indicatore",
-        "en": "Press on add to add a new indicator",
-        "de": "Auf Hinzuf\u00fcgen dr\u00fccken, um einen neuen Indikator hinzuzuf\u00fcgen"
-    }
-}
-
-
-{
     "codici": {
         "hotel": {
             "occupazione": {
@@ -3102,6 +3078,30 @@
                 "de": ""
             }
         }
+    }
+}
+
+
+{
+    "indicatori_selezionati": {
+        "it": "Indicatori selezionati",
+        "en": "Selected indicators",
+        "de": "Ausgew\u00e4hlte Indikatoren"
+    },
+    "aggiungi_indicatore": {
+        "it": "Aggiungi",
+        "en": "Add",
+        "de": "Hinzuf\u00fcgen"
+    },
+    "atterraggio_seleziona": {
+        "it": "Seleziona o aggiungi un indicatore",
+        "en": "Select or add an indicator",
+        "de": "Indikator ausw\u00e4hlen oder hinzuf\u00fcgen"
+    },
+    "atterraggio_aggiungi": {
+        "it": "Premi su aggiungi per aggiungere un nuovo indicatore",
+        "en": "Press on add to add a new indicator",
+        "de": "Auf Hinzuf\u00fcgen dr\u00fccken, um einen neuen Indikator hinzuzuf\u00fcgen"
     }
 }
 
@@ -4422,6 +4422,21 @@
 
 {
     "colonne": {
+        "nome_struttura": {
+            "it": "Struttura"
+        },
+        "ultima_modifica_il": {
+            "it": "Ultima modifica il"
+        },
+        "modificato_da": {
+            "it": "Modificato da"
+        }
+    }
+}
+
+
+{
+    "colonne": {
         "codice": {
             "it": "Codice"
         },
@@ -4518,21 +4533,6 @@
 
 {
     "colonne": {
-        "nome_struttura": {
-            "it": "Struttura"
-        },
-        "ultima_modifica_il": {
-            "it": "Ultima modifica il"
-        },
-        "modificato_da": {
-            "it": "Modificato da"
-        }
-    }
-}
-
-
-{
-    "colonne": {
         "nome": {
             "it": "Nome"
         },
@@ -4617,24 +4617,6 @@
         "nome": {
             "it": "Nome"
         },
-        "tipo": {
-            "it": "Tipo"
-        },
-        "nome_zona": {
-            "it": "Zona"
-        },
-        "nome_territorio": {
-            "it": "Territorio"
-        }
-    }
-}
-
-
-{
-    "colonne": {
-        "nome": {
-            "it": "Nome"
-        },
         "nome_territorio": {
             "it": "Territorio"
         },
@@ -4646,6 +4628,24 @@
         },
         "strutture_associate": {
             "it": "Strutture associate"
+        }
+    }
+}
+
+
+{
+    "colonne": {
+        "nome": {
+            "it": "Nome"
+        },
+        "tipo": {
+            "it": "Tipo"
+        },
+        "nome_zona": {
+            "it": "Zona"
+        },
+        "nome_territorio": {
+            "it": "Territorio"
         }
     }
 }
