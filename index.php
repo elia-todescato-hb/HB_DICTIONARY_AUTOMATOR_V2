@@ -41,9 +41,9 @@ foreach ($svelte as $key => $value) {
   echo "
 <script>
   //ajax for js file
-  var dictionary = $value
-  console.log(dictionary);
-  dictionary = JSON.stringify(dictionary)
+  var dictionary_svelte = $value
+  console.log(dictionary_svelte);
+  dictionary = JSON.stringify(dictionary_svelte)
   //make ajax call
   $.ajax({
     type: \"POST\",
@@ -61,25 +61,6 @@ foreach ($svelte as $key => $value) {
 }
 ?>
 
-
-
-<script>
-  var dictionary_svelte = <?php echo "$svelte" ?>
-
-  dictionary_svelte = JSON.stringify(dictionary_svelte);
-  //make ajax call
-  $.ajax({
-    type: "POST",
-    url: "src/write_json.php",
-    dataType: 'json',
-    data: {
-      dictionary: dictionary_svelte
-    },
-    success: function(data) {
-      console.log(data);
-    }
-  });
-</script>
 
 <h1>
   ✅ Dictionary generated

@@ -1,4 +1,6 @@
 <?php
+
+
 // class read_svelte
 // {
 //   public $svelte_file;
@@ -110,14 +112,11 @@ class read_svelte
   function read()
   {
     $path = $this->getPath(); //get the path of every dictionary file
-    info("leggendo queste path: ");
     foreach ($path as $key => $value) {
-      info("eseguendo ... " . $value);
-      $this->svelte_file[$key] = file_get_contents($value);
-      info("findendo ... " . $value);
+      $this->svelte_file[$key] = file_get_contents($value); //TODO: cambia con value
     }
-    info("sto pulendo:" . count($this->svelte_file) . " dizionari");
-    info("prima di pulire..");
+    // info("sto pulendo:" . count($this->svelte_file) . " dizionari");
+    // info("prima di pulire..");
     return $this->clean($this->svelte_file); //remove bad char from encoding
   }
 
@@ -128,25 +127,36 @@ class read_svelte
    */
   function clean($str)
   {
-    preprint($str, 1);
+
     $str_array = array();
     $return_str = array();
+
     foreach ($str as $raw_dic) {
-      $str_array = explode("const $this->nome_dizionario", $raw_dic); //remove const var =
+      $str_array = explode('<script context="module"', $raw_dic); //remove const var =
       $re = '/^(.*?)\{/ms';
-      preg_match($re, $raw_dic, $matches);
-      if ($matches[1] !== null) {
-        $str_array = explode($matches[1], $raw_dic); //remove const var =
-        $str_array = explode("export", $str_array[1]);
-        $nome_dizionario = $str_array[1];
-        info("sto pulendo {$nome_dizionario}");
-        // info($str_array[0]);
-        // preprint($str_array);
-        array_push($return_str, $str_array[0]); //TODO: da cambiare con indice 0
+
+      if ($str_array != null) {
+        preg_match($re, $str_array[1], $matches);
+        // $str_array = explode($matches[1], $str_array[1]); //remove const var =
+
+        $re = '/\{(?:[^{}]+|\{(?:[^{}]+|\{(?:[^{}]+|\{[^{}]*\})*\})*\})*\}/m';
+        preg_match($re, $str_array[1], $matches);
+
+        $json = $matches[0];
+        if ($matches[0] !== null) {
+          array_push($return_str, $matches[0]); //TODO: da cambiare con indice 0
+        }
+        //clean also the export js function
       }
-      //clean also the export js function
+      info("finito di pulire..");
     }
-    info("finito di pulire..");
+    $fp = fopen("log.txt", 'w');
+    foreach ($return_str as $key => $value) {
+      # code...
+      fwrite($fp, $value);
+    }
+    fclose($fp);
+
     return ($return_str);
   }
 }

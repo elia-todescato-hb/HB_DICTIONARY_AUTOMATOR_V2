@@ -10,9 +10,12 @@ class write_json
   public static function write_json_to_file()
   {
 
-    print_r($_POST, 1);
+    print_r($_POST['dictionary']);
     $file_name = "dictionary.json";
-    $data = json_decode($_POST['dictionary']);
+    $data = $_POST['dictionary'];
+    if (!is_array($_POST['dictionary'])) {
+      $data = json_decode($_POST['dictionary']);
+    }
     $data = json_encode($data, JSON_PRETTY_PRINT);
     $fp = fopen("lib/$file_name", 'a');
 
