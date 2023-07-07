@@ -4,6 +4,7 @@
 error_reporting(E_ERROR | E_PARSE);
 include "tools/log/log.php";
 include "src/read_js.php";
+include "tools/utf8_encoding/utf8.php";
 $dictionary = new read_js();
 $dictionary = $dictionary->read();
 

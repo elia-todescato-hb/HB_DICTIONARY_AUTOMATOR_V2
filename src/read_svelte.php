@@ -23,11 +23,10 @@ class read_svelte
     $array_of_dir = $folder_scan->scan($this->dic);
     info("<h1>Searching for svelte file</h1>");
     info("Scanning...");
+
     foreach ($array_of_dir as $key => $dir_path) { //ciclo tutti i percorsi
       $folder = pathinfo($dir_path);
       if (key_exists('extension', $folder)) { //allora stiamo valutando un file
-        //open dir path that i have
-        // info("la chiave con valore [extension] esiste e corrisponde al path: {$folder['dirname']}");
         if ($folder['extension'] == "svelte") {
           array_push($this->svelte_file, "{$folder['dirname']}/{$folder['basename']}");
         }
@@ -37,7 +36,7 @@ class read_svelte
   }
   /**
    * Read the dictionary file
-   * @params none
+   * @param none
    *
    */
   function read()
@@ -52,7 +51,7 @@ class read_svelte
 
   /**
    * just clean the current file
-   * @params string
+   * @param string
    * @return string
    */
   function clean($str)
