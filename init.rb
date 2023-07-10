@@ -23,19 +23,17 @@ output, status = Open3.capture2(command)
 
 
 
-  if status.exitstatus == 1
-    puts "ports already in use would you like another ports? [y/n] ".yellow
-    option = gets
-
-    if option.chomp.upcase =='Y'
-      puts "trying again"
-
-      (8001..8100).each do |port|
-        command = "php -S localhost:#{port} -t ./"
-        output, status = Open3.capture2(command)
-        if status.exitstatus == 1
-          puts "port #{port} is in use".yellow
-        end
+if status.exitstatus == 1
+  puts "ports already in use would you like another ports? [y/n] ".yellow
+  option = gets
+  if option.chomp.upcase =='Y'
+    puts "trying again"
+    (8001..8100).each do |port|
+      command = "php -S localhost:#{port} -t ./"
+      output, status = Open3.capture2(command)
+      if status.exitstatus == 1
+        puts "port #{port} is in use".yellow
       end
     end
   end
+end
