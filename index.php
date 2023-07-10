@@ -15,22 +15,28 @@ $dictionary = $dictionary->read();
 $svelte = new read_svelte();
 $svelte = $svelte->read();
 ?>
+<span>
+  <code id="BoxErrori">
 
+  </code>
+</span>
 <?php
 foreach ($dictionary as $key => $value) {
   echo "
-<script>
+  <script>
   //ajax for js file
-  var dictionary = $value
-  console.log(dictionary);
-  dictionary = JSON.stringify(dictionary)
+  var dictionary_svelte = $value[0]
+  var path = \"$value[1]\"
+  
+  dictionary = JSON.stringify(dictionary_svelte)
   //make ajax call
   $.ajax({
     type: \"POST\",
     url: \"src/write_json.php\",
     dataType: 'json',
     data: {
-      dictionary: dictionary
+      dictionary: dictionary_svelte,
+      path: path
     },
     success: function(data) {
       console.log(data);
@@ -43,11 +49,22 @@ foreach ($dictionary as $key => $value) {
 
 <?php
 foreach ($svelte as $key => $value) {
+
   echo "
 <script>
-  //ajax for js file
-  var dictionary_svelte = $value
-  console.log(dictionary_svelte);
+  //ajax for svelte file
+  try {
+    var dictionary_svelte = $value[0]
+  } catch (error) {
+    var dictionary_svelte = {}
+    var box_errori = document.getElementById('BoxErrori')
+    document.createElement('br');
+    box_errori.append('ERROR: errore con: $value[1] ');
+
+  }
+  console.log(dictionary_svelte)
+  var path = \"$value[1]\"
+
   dictionary = JSON.stringify(dictionary_svelte)
   //make ajax call
   $.ajax({
@@ -55,7 +72,8 @@ foreach ($svelte as $key => $value) {
     url: \"src/write_json.php\",
     dataType: 'json',
     data: {
-      dictionary: dictionary_svelte
+      dictionary: dictionary_svelte,
+      path: path
     },
     success: function(data) {
       console.log(data);
@@ -65,6 +83,9 @@ foreach ($svelte as $key => $value) {
   ";
 }
 ?>
+
+<script>
+</script>
 
 
 <h1>

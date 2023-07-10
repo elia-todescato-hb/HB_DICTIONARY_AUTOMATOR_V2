@@ -15,14 +15,20 @@ class write_json
   public static function write_json_to_file()
   {
 
-    print_r($_POST['dictionary']);
     $file_name = "dictionary.json";
-    $data = $_POST['dictionary'];
-    if (!is_array($_POST['dictionary'])) {
+    $data = !empty($_POST['dictionary']) ? $_POST['dictionary'] : array();
+    $path = $_POST['path'];
+    $data = ($data == null) ? array() : $data;
+
+    if (!is_array($data) && !array($_POST['path'])) {
       $data = json_decode($_POST['dictionary'], JSON_UNESCAPED_UNICODE);
+      $path = json_decode($_POST['path'], JSON_UNESCAPED_UNICODE);
+    } else if ($data == array()) {
+      $data = "[ERROR] FILE IN ERRRORE DI LETTURA: " . $path . "\n";
+      file_put_contents($data, FILE_APPEND);
     }
     $data = json_encode($data, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
-    $data = decodeUtf8($data);
+    $data = $path . "\n" . decodeUtf8($data);
     file_put_contents("lib/$file_name", "\n\n\n" . $data, FILE_APPEND);
   }
 }

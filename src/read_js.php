@@ -54,7 +54,11 @@ class read_js
 
     foreach ($path as $key => $value) {
       info("eseguendo ... " . $value);
-      $this->js_file[$key] = file_get_contents($value);
+      $this->js_file[$key] =
+        array(
+          $value,
+          file_get_contents($value)
+        );
       info("findendo ... " . $value);
     }
     info("sto pulendo:" . count($this->js_file) . " dizionari");
@@ -72,19 +76,31 @@ class read_js
     $str_array = array();
     $return_str = array();
     foreach ($str as $raw_dic) {
-      $str_array = explode("const $this->nome_dizionario", $raw_dic);
+      $content = $raw_dic[1]; //content of the file
+      $path = $raw_dic[0]; //path of the file
+
+
+      $str_array = explode("const $this->nome_dizionario", $content);
       $re = '/^(.*?)\{/ms';
-      preg_match($re, $raw_dic, $matches);
+      preg_match($re, $content, $matches);
       if ($matches[1] !== null) {
-        $str_array = explode($matches[1], $raw_dic);
+        $str_array = explode($matches[1], $content);
         $str_array = explode("export", $str_array[1]);
         $nome_dizionario = $str_array[1];
         info("sto pulendo {$nome_dizionario}");
         // info($str_array[0]);
         // preprint($str_array);
-        array_push($return_str, $str_array[0]);
+        array_push(
+          $return_str,
+          array(
+            $str_array[0],
+            $path
+          )
+        );
       }
     }
+
+
     info("finito di pulire..");
     return ($return_str);
   }

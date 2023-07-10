@@ -43,8 +43,9 @@ class read_svelte
   function read()
   {
     $path = $this->getPath(); //get the path of every dictionary file
+
     foreach ($path as $key => $value) {
-      $this->svelte_file[$key] = file_get_contents($value);
+      $this->svelte_file[$key] = array(file_get_contents($value), $value); //get the value of the file and the path
     }
     return $this->clean($this->svelte_file); //remove bad char from encoding
   }
@@ -61,7 +62,10 @@ class read_svelte
     $return_str = array();
 
     foreach ($str as $raw_dic) {
-      $str_array = explode('<script context="module"', $raw_dic); //remove const var =
+      $content = $raw_dic[0]; //content of the file
+      $path = $raw_dic[1]; //path of the file
+
+      $str_array = explode('<script context="module"', $content); //remove const var =
       $re = '/^(.*?)\{/ms';
 
       if ($str_array != null) {
@@ -72,10 +76,9 @@ class read_svelte
 
         $json = $matches[0];
         if ($matches[0] !== null) {
-          array_push($return_str, $matches[0]); //TODO: da cambiare con indice 0
+          array_push($return_str, array($matches[0], $path)); //TODO: da cambiare con indice 0
         }
       }
-      info("finito di pulire..");
     }
 
     return ($return_str);
